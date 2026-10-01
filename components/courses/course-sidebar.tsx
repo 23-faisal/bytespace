@@ -2,12 +2,13 @@ import { BadgeCheck, FolderOpen, Handshake, Video } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { formatDuration } from "@/lib/format";
 import type { CourseDetail } from "@/lib/queries/types";
 
 const PREVIEW_COUNT = 3;
-const cta = "Ready to Dive In? Enroll Now and Start Building Your Digital Future!";
+const cta =
+  "Ready to Dive In? Enroll Now and Start Building Your Digital Future!";
 
 const includes = [
   { icon: FolderOpen, label: "Learning Resources" },
@@ -16,11 +17,15 @@ const includes = [
   { icon: Handshake, label: "Private Consultation" },
 ];
 
-const heading = "font-heading text-xl leading-[1.2] font-semibold tracking-[-0.01em] text-ink";
+const heading =
+  "font-heading text-xl leading-[1.2] font-semibold tracking-[-0.01em] text-ink";
 
 export function CourseSidebar({ course }: { course: CourseDetail }) {
   const lessons = course.sections.flatMap((s) => s.lessons);
-  const previews = [...lessons.filter((l) => l.isPreview), ...lessons.filter((l) => !l.isPreview)].slice(0, PREVIEW_COUNT);
+  const previews = [
+    ...lessons.filter((l) => l.isPreview),
+    ...lessons.filter((l) => !l.isPreview),
+  ].slice(0, PREVIEW_COUNT);
   const remaining = course.lessonCount - previews.length;
 
   return (
@@ -34,17 +39,28 @@ export function CourseSidebar({ course }: { course: CourseDetail }) {
         </h2>
         <ol className="flex flex-col gap-3 text-base">
           {previews.map((lesson, i) => (
-            <li key={lesson.id} className="flex items-start justify-between gap-6">
+            <li
+              key={lesson.id}
+              className="flex items-start justify-between gap-6"
+            >
               <span className="flex gap-2 leading-[1.2] font-medium text-ink">
-                <span className="w-6 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                <span className="w-6 shrink-0">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 {lesson.title}
               </span>
-              <span className="shrink-0 leading-[1.2] text-brand">{formatDuration(lesson.durationMinutes)}</span>
+              <span className="shrink-0 leading-[1.2] text-brand">
+                {formatDuration(lesson.durationMinutes)}
+              </span>
             </li>
           ))}
           {remaining > 0 && (
             <li className="leading-[1.6] text-gray-700">
-              <Link href={`/courses/${course.slug}/lessons`} scroll={false} className="hover:text-brand hover:underline">
+              <Link
+                href={`/courses/${course.slug}/lessons`}
+                scroll={false}
+                className="hover:text-brand hover:underline"
+              >
                 {remaining} more videos
               </Link>
             </li>
@@ -60,16 +76,26 @@ export function CourseSidebar({ course }: { course: CourseDetail }) {
           </span>
           /lifetime
         </p>
-        <Button asChild variant="lime" size="pill" className="w-full font-medium">
-          <Link href="/register">Enroll Now</Link>
-        </Button>
+        <Link
+          href="/register"
+          className={buttonVariants({
+            variant: "lime",
+            size: "pill",
+            className: "w-full font-medium",
+          })}
+        >
+          Enroll Now
+        </Link>
       </section>
 
       <section className="flex flex-col gap-6">
         <h2 className={heading}>This course include</h2>
         <ul className="flex flex-col gap-3">
           {includes.map(({ icon: Icon, label }) => (
-            <li key={label} className="flex items-center gap-2 text-base leading-[1.6] text-gray-700">
+            <li
+              key={label}
+              className="flex items-center gap-2 text-base leading-[1.6] text-gray-700"
+            >
               <Icon className="size-6 shrink-0 text-brand" aria-hidden />
               {label}
             </li>
@@ -89,8 +115,12 @@ export function CourseSidebar({ course }: { course: CourseDetail }) {
             className="size-[52px] shrink-0 rounded-full object-cover"
           />
           <div>
-            <h2 className="text-lg leading-[1.2] font-medium text-ink">{course.creator.name}</h2>
-            <p className="text-base leading-[1.6] text-gray-700">{course.creator.role}</p>
+            <h2 className="text-lg leading-[1.2] font-medium text-ink">
+              {course.creator.name}
+            </h2>
+            <p className="text-base leading-[1.6] text-gray-700">
+              {course.creator.role}
+            </p>
           </div>
         </div>
         <p className="text-base leading-[1.6] text-gray-700">{cta}</p>
