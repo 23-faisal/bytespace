@@ -1,0 +1,196 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=clash-display@200,300,400,500,600,700&display=swap");
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  /* Fonts */
+  --font-sans: "Satoshi", sans-serif;
+  --font-heading: var(--font-poppins);
+  --font-display: "Clash Display", sans-serif;
+
+  /* Main colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand: #003be2;
+  --color-lime: #d4fb20;
+  --color-lime-500: #cbfc01;
+  --color-violet: #7f30f7;
+  --color-ink: #242528;
+
+  /* Gray colors */
+  --color-gray-50: #f5f5f6;
+  --color-gray-100: #e5e6e8;
+  --color-gray-200: #ced0d3;
+  --color-gray-300: #abaeb5;
+  --color-gray-400: #82868e;
+  --color-gray-700: #4b4c53;
+  --color-gray-900: #3a3b3f;
+  --color-gray-950: #242528;
+
+  --color-body: #4f4f4f;
+
+  /* Shadow */
+  --shadow-float:
+    51px 73px 72px 0 rgb(0 0 0 / 0.13), 37px 53px 56px 0 rgb(0 0 0 / 0.11),
+    26px 37px 36px 0 rgb(0 0 0 / 0.1), 17px 24px 24px 0 rgb(0 0 0 / 0.09),
+    10px 15px 16px 0 rgb(0 0 0 / 0.08), 5px 8px 10px 0 rgb(0 0 0 / 0.07),
+    2px 3px 6px 0 rgb(0 0 0 / 0.06), 0.5px 0.7px 3px 0 rgb(0 0 0 / 0.04);
+
+  /* Shadcn colors */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #242528;
+
+  --card: #ffffff;
+  --card-foreground: #242528;
+
+  --popover: #ffffff;
+  --popover-foreground: #242528;
+
+  --primary: #003be2;
+  --primary-foreground: #f5f5f6;
+
+  --secondary: #d4fb20;
+  --secondary-foreground: #242528;
+
+  --muted: #f5f5f6;
+  --muted-foreground: #82868e;
+
+  --accent: #f5f5f6;
+  --accent-foreground: #242528;
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: #ced0d3;
+  --input: #e5e6e8;
+  --ring: #003be2;
+
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+  }
+
+  html {
+    font-family: "Satoshi", sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Satoshi", sans-serif;
+  }
+
+  /* Poppins for headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-poppins);
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.12) 2px, transparent 2px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.12) 2px, transparent 2px);
+
+  background-size: 120px 120px;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: calc(1200px + 2rem);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
