@@ -1,5 +1,39 @@
 import type { Category, CourseSummary } from "./queries/types";
 
+export const digitalAsset = {
+  slug: "build-digital-asset",
+  title: "Build Digital Assets",
+  image: "/images/courses/course-2.jpg",
+  level: "Beginner",
+  price: 25,
+  students: 30,
+  featured: true,
+  categorySlug: "digital-illustration",
+  creatorName: "purepeal studio",
+  creatorSlug: "purepeal-studio",
+  lessons: 17,
+  minutes: 136,
+  reviewCount: 59,
+  rating: 4.5,
+} satisfies CourseSummary;
+
+export const bigData = {
+  slug: "the-power-of-big-data",
+  title: "The Power of Big Data",
+  image: "/images/courses/course-3.jpg",
+  level: "Beginner",
+  price: 25,
+  students: 30,
+  featured: true,
+  categorySlug: "data-science",
+  creatorName: "purepeal studio",
+  creatorSlug: "purepeal-studio",
+  lessons: 17,
+  minutes: 136,
+  reviewCount: 59,
+  rating: 4.5,
+} satisfies CourseSummary;
+
 export const categories: Category[] = [
   {
     slug: "music",
