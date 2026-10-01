@@ -18,13 +18,20 @@ export function ReviewCard({ review }: { review: Review }) {
               className="size-[52px] shrink-0 rounded-full object-cover"
             />
             <div>
-              <h3 className="text-lg leading-[1.2] font-medium text-ink">{review.authorName}</h3>
-              <p className="text-base leading-[1.6] text-gray-700">{review.authorRole}</p>
+              <h3 className="text-lg leading-[1.2] font-medium text-ink">
+                {review.authorName}
+              </h3>
+              <p className="text-base leading-[1.6] text-gray-700">
+                {review.authorRole}
+              </p>
             </div>
           </div>
           <StarRating rating={review.rating} />
         </div>
-        <time dateTime={review.createdAt.toISOString()} className="shrink-0 text-base leading-[1.6] text-gray-700">
+        <time
+          dateTime={review.createdAt.toISOString()}
+          className="shrink-0 text-base leading-[1.6] text-gray-700"
+        >
           {formatTimeAgo(review.createdAt)}
         </time>
       </header>

@@ -2,7 +2,7 @@ import { SearchX } from "lucide-react";
 import Link from "next/link";
 
 import { CourseCard } from "@/components/shared/course-card";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import type { CourseSummary } from "@/lib/queries/types";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +16,12 @@ type CourseGridProps = {
 export function CourseGrid({ courses, resetHref, className }: CourseGridProps) {
   if (courses.length === 0) {
     return (
-      <div className={cn("flex flex-col items-center gap-4 rounded-3xl bg-gray-50 px-6 py-16 text-center", className)}>
+      <div
+        className={cn(
+          "flex flex-col items-center gap-4 rounded-3xl bg-gray-50 px-6 py-16 text-center",
+          className,
+        )}
+      >
         <span className="grid size-16 place-items-center rounded-3xl bg-lime">
           <SearchX className="size-8 text-ink" aria-hidden />
         </span>
@@ -24,11 +29,19 @@ export function CourseGrid({ courses, resetHref, className }: CourseGridProps) {
           No courses match your search
         </h2>
         <p className="max-w-md text-base leading-[1.6] text-gray-700">
-          Try a different keyword, pick another category or clear the filters to see every course.
+          Try a different keyword, pick another category or clear the filters to
+          see every course.
         </p>
-        <Button asChild variant="lime" size="pill" className="mt-2 font-medium">
-          <Link href={resetHref}>Clear filters</Link>
-        </Button>
+        <Link
+          href={resetHref}
+          className={buttonVariants({
+            variant: "lime",
+            size: "pill",
+            className: "mt-2 font-medium",
+          })}
+        >
+          Clear filters
+        </Link>
       </div>
     );
   }
